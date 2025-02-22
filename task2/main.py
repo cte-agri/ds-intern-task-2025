@@ -1,12 +1,15 @@
+import math
+import time
+
 import numpy as np
 import pandas as pd
-import time
+
 
 def main(input_row):
     lines = input_row.strip().splitlines()
     inputs = [list(map(int, line.split())) for line in lines]
 
-    price = 1000
+    price = 1000 #ここの処理を変える
 
     return price
 
@@ -27,6 +30,7 @@ if __name__ == '__main__':
     print(f"elapsed time: {elapsed_time}")
 
     mae = np.mean(np.abs(df["output"]-df["result"]))
-
     print(f"MAE: {mae}")
     
+    score = math.log(mae * elapsed_time)
+    print(f"SCORE: {score}")
